@@ -1,4 +1,4 @@
-package com.hejw.file;
+package com.hejunwei.utils;
 
 import java.io.BufferedReader;
 import java.io.File;
