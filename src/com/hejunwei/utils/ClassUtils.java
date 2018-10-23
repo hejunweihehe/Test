@@ -35,8 +35,7 @@ public class ClassUtils {
 			ArrayList<Method> restMethods = new ArrayList<>();
 			StringBuilder builder = new StringBuilder();
 			for (Method m : clz.getMethods()) {
-				if ((m.getName().startsWith("get") && m.getParameterCount() == 0
-						&& Modifier.isPublic(m.getModifiers()))
+				if ((m.getName().startsWith("get") && m.getParameterCount() == 0 && Modifier.isPublic(m.getModifiers()))
 						|| (containMethods(m.getName(), stringName) && (m.getParameterCount() == 0))) {
 					// 如果返回了容器，那么就做额外的处理
 					Class<?> returnType = m.getReturnType();
@@ -67,7 +66,15 @@ public class ClassUtils {
 			for (int i = 0; i < depth; i++) {
 				builder.append("\t");
 			}
-			builder.append("rest methods:" + Arrays.toString(restMethods.toArray()) + "\n");
+			builder.append("rest methods:\n");
+			// 剩余的方法
+			for (Method restM : restMethods) {
+				for (int i = 0; i < depth; i++) {
+					builder.append("\t");
+				}
+				builder.append(restM.toString() + "\n");
+			}
+
 			for (int i = 0; i < depth; i++) {
 				builder.append("\t");
 			}
